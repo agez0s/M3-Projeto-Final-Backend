@@ -1,12 +1,9 @@
-// importo o servico
 const TodolistService = require("./../services/todolist.service");
 
-// inicializo a classe do servico para poder acessar seus metodos
 const todolistService = new TodolistService();
 
 class todolistController {
   getTodos = async (req, res) => {
-    // acesso a funcao do service para acessar a lista de vagas do banco
     const listaTodos = await todolistService.findAll();
     res.status(200).send(listaTodos);
   };
