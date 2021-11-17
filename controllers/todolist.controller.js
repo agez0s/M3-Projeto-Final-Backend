@@ -21,7 +21,7 @@ class todolistController {
       .create(req.body)
       .then(() => {
         res
-          .status(200)
+          .status(201)
           .send({ message: `Tarefa criada com sucesso!`, data: req.body });
       })
       .catch((err) => {
@@ -34,7 +34,7 @@ class todolistController {
     await todolistService
       .edit(req.params.id, req.body)
       .then(() => {
-        res.send({ message: `Tarefa editada com sucesso` });
+        res.status(200).send({ message: `Tarefa editada com sucesso` });
       })
       .catch((err) => {
         console.log(err);
@@ -46,7 +46,7 @@ class todolistController {
     await todolistService
       .delete(req.params.id)
       .then(() => {
-        res.send({ message: "Tarefa excluída com sucesso" });
+        res.status(200).send({ message: "Tarefa excluída com sucesso" });
       })
       .catch((err) => {
         console.log(err);
