@@ -7,6 +7,11 @@ const todolistController = new TodolistController();
 
 router.get("/", todolistController.getTodos);
 
+//pega se tentar dar GET na rota /add
+router.get("/add", (req, res) => {
+  res.status(405).send({ message: "Recurso não disponível nesta rota."})
+})
+
 router.get("/:id", todolistController.getTodoById);
 
 router.post("/add", todolistController.createTodo);
@@ -15,10 +20,24 @@ router.put("/:id", todolistController.editTodo);
 
 router.delete("/:id", todolistController.deleteTodo);
 
+//daqui em diante, são rotas para evitar erros e tentar direcionar o usuário
+
 router.post("*", (req, res) => {
   res
     .status(405)
     .send({ message: "Recurso não disponível. Tente na rota /add" });
+});
+
+router.delete("*", (req, res) => {
+  res
+    .status(405)
+    .send({ message: "Recurso não disponível." });
+});
+
+router.put("*", (req, res) => {
+  res
+    .status(405)
+    .send({ message: "Recurso não disponível." });
 });
 
 router.get("*", (req, res) => {

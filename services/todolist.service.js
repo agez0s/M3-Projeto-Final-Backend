@@ -14,6 +14,14 @@ class todolistService {
   delete = async (id) => {
     return await Todo.deleteOne({ _id: id });
   };
+  exists = async (id) => {
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      return false;
+    }
+
+    const existe = await Todo.exists({ _id: id });
+    return existe;
+  };
 }
 
 module.exports = todolistService;
