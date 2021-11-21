@@ -14,10 +14,10 @@ function checaCampos(corpo) {
   ) {
     return `Campos "titulo", "descricao", "prazo", "prioridade" e "status" não podem estar vazios`;
   }
-  if (corpo.prioridade != 0 || corpo.prioridade != 1 || corpo.prioridade != 2) {
+  if (corpo.prioridade != 0 && corpo.prioridade != 1 && corpo.prioridade != 2) {
     return `Campo "prioridade" incorreto. 0 = Alta, 1 = Média, 2 = Baixa`;
   }
-  if (corpo.status != 0 || corpo.status != 1 || corpo.status != 2) {
+  if (corpo.status != "0" && corpo.status != "1" && corpo.status != "2") {
     return `Campo "status" incorreto. 0 = A fazer, 1 = Fazendo, 2 = Feito`;
   }
   return "ok";
@@ -46,6 +46,7 @@ class todolistController {
     const checagem = checaCampos(req.body);
 
     if (checagem == "ok") {
+      
       await todolistService
         .create(req.body)
         .then(() => {
