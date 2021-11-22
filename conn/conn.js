@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
-const Conn = () => {
+const Conn = (url, user, pass, banco) => {
   mongoose
-    .connect("mongodb://localhost:27017/todos", {
+    .connect(`${url}/${banco}`, {
+      user: user,
+      pass: pass,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
