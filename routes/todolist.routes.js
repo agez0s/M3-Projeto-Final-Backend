@@ -14,13 +14,16 @@ router.get("/add", (req, res) => {
 
 router.get("/:id", todolistController.getTodoById);
 
+/*
+Desliguei essas rotas para evitar deface
+
 router.post("/add", todolistController.createTodo);
 
 router.put("/:id", todolistController.editTodo);
 
 router.delete("/:id", todolistController.deleteTodo);
 
-//daqui em diante, são rotas para evitar erros e tentar direcionar o usuário
+daqui em diante, são rotas para evitar erros e tentar direcionar o usuário */
 
 router.post("*", (req, res) => {
   res
